@@ -1,9 +1,7 @@
 <script setup></script>
 
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+  <div>我是嘿嘿嘿</div>
 </template>
 
 <style scoped></style>
