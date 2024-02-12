@@ -1,3 +1,4 @@
+import { userGetUserInfoAPI } from '@/api/user'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
@@ -12,7 +13,25 @@ export const useUserStore = defineStore(
     const removeToken = () => {
       token.value = ''
     }
-    return { token, setToken, removeToken }
+
+    // 用戶基本信息
+    const userInfo = ref({})
+    const getUserInfo = async () => {
+      const res = await userGetUserInfoAPI()
+      userInfo.value = res.data.data
+    }
+    const setUser = (obj) => {
+      userInfo.value = obj
+    }
+    // 暴露出去
+    return {
+      token,
+      setToken,
+      removeToken,
+      userInfo,
+      getUserInfo,
+      setUser
+    }
   },
   {
     persist: true

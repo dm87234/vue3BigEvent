@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useUserStore } from '@/stores'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -35,6 +36,14 @@ const router = createRouter({
       ]
     }
   ]
+})
+
+// 導航守衛
+// 返回值: undefined / true => 放行
+// false => 回到from的地址頁面或攔截到對應的地址
+router.beforeEach((to) => {
+  const useStore = useUserStore()
+  if (!useStore.token && to.path !== '/login') return '/login'
 })
 
 export default router

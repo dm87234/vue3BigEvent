@@ -11,7 +11,7 @@ const UserStore = useUserStore()
 // ---pinia End---
 
 const router = useRouter()
-const isRegister = ref(true)
+const isRegister = ref(false)
 const form = ref()
 // 整個form對象
 const formModel = ref({
@@ -53,7 +53,7 @@ const registerFn = async () => {
   await form.value.validate()
   await userRegisterAPI(formModel.value)
   ElMessage.success('註冊成功')
-  isRegister.value = false
+  isRegister.value = true
 }
 // 登入
 const loginFn = async () => {
