@@ -13,3 +13,9 @@ export const artDelChannelAPI = (id) =>
   request.delete('/my/cate/del', {
     params: { id }
   })
+
+//獲取文章列表
+export const artGetListAPI = (params) =>
+  request.get('/my/article/list', {
+    params
+  })
